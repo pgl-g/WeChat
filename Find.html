@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="./css/wechat.css" />
+		<style type="text/css">
+			.mui-table-view:nth-child(1) {
+				margin-bottom: 10px;
+			}
+
+			.mui-table-view:nth-child(2) {
+				margin-bottom: 10px;
+			}
+
+			.mui-table-view:nth-child(3) {
+				margin-bottom: 10px;
+			}
+
+			.mui-table-view:nth-child(4) {
+				margin-bottom: 10px;
+			}
+
+			.mui-table-view:nth-child(5) {
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 头部 -->
+		<header class="mui-bar mui-bar-nav header">
+			<h1 class="mui-title">发现</h1>
+			<div class="icon">
+				<i class="mui-icon mui-icon-search search"></i>
+				<i class="mui-icon mui-icon-plus"></i>
+			</div>
+		</header>
+
+
+		<!-- 主体部分 -->
+		<div class="mui-content">
+			<!-- 图文列表 -->
+			<ul class="mui-table-view find">
+
+				<li class="mui-table-view-cell mui-media" id="circle1">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/1.jpg">
+						<div class="mui-media-body">
+							朋友圈
+						</div>
+						<span class="mui-navigate-right"></span>
+					</a>
+				</li>
+			</ul>
+
+			<ul class="mui-table-view find">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/1.jpg">
+						<div class="mui-media-body">
+							扫一扫
+							<span class="mui-navigate-right"></span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media" id = "shake">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/1.jpg">
+						<div class="mui-media-body">
+							摇一摇
+							<span class="mui-navigate-right"></span>
+						</div>
+					</a>
+				</li>
+			</ul>
+
+			<ul class="mui-table-view find">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/1.jpg">
+						<div class="mui-media-body">
+							看一看
+							<span class="mui-navigate-right"></span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/1.jpg">
+						<div class="mui-media-body">
+							搜一搜
+							<span class="mui-navigate-right"></span>
+						</div>
+					</a>
+				</li>
+			</ul>
+
+			<ul class="mui-table-view find">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/1.jpg">
+						<div class="mui-media-body">
+							附件的人
+							<span class="mui-navigate-right"></span>
+						</div>
+					</a>
+				</li>
+			</ul>
+
+			<ul class="mui-table-view find">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/1.jpg">
+						<div class="mui-media-body">
+							购物
+							<span class="mui-navigate-right"></span>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/1.jpg">
+						<div class="mui-media-body">
+							游戏
+							<span class="mui-navigate-right"></span>
+						</div>
+					</a>
+				</li>
+			</ul>
+
+			<ul class="mui-table-view find">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/1.jpg">
+						<div class="mui-media-body">
+							小程序
+							<span class="mui-navigate-right"></span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function() {
+				mui("#circle1")[0].addEventListener("tap", function() {
+					// alert(1)
+				mui.openWindow({
+					url:'Circle.html',
+					id:'Circle.html'
+				})
+				})
+				
+				mui("#shake")[0].addEventListener('tap',function(){
+					// alert(1)
+					mui.openWindow({
+						url:'Shake.html',
+						id:'Shake.html'
+					})
+				})
+			})
+		</script>
+	</body>
+
+</html>

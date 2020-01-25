@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="./css/wechat.css" />
+	</head>
+
+	<body>
+		<!-- 头部 -->
+		<header class="mui-bar mui-bar-nav header">
+			<h1 class="mui-title">通讯录</h1>
+			<div class="icon">
+				<i class="mui-icon mui-icon-search search"></i>
+				<i class="mui-icon mui-icon-plus"></i>
+			</div>
+		</header>
+		<!-- 主体部分 -->
+		<div class="mui-content">
+			<!-- 列表格式 -->
+			<ul class="mui-table-view addresslist">
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/1.jpg">
+						<div class="mui-media-body">
+							新的朋友
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/3.jpg">
+						<div class="mui-media-body">
+							群聊
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/4.jpg">
+						<div class="mui-media-body">
+							标签
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="javascript:;">
+						<img class="mui-media-object mui-pull-left" src="./img/4.jpg">
+						<div class="mui-media-body">
+							公众号
+						</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view titlephone">
+
+			</ul>
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			mui.plusReady(function() {
+				// 获取手机号的参数和数据
+				var str = ''
+				plus.contacts.getAddressBook(plus.contacts.ADDRESSBOOK_PHONE, function(addressbook) {
+					
+					// 在通讯录中查询对象
+					addressbook.find(null, function(data) {
+						// alert(JSON.stringify(data))
+						for(var i = 0; i < data.length; i++){
+							str += `<li class="mui-table-view-cell">
+								
+									<span>${data[i].displayName}</span>
+									<b>${data[i].phoneNumbers[0].value}</b>
+							</li> `
+							mui('.titlephone')[0].innerHTML = str
+						}
+						
+					// alert( data[0].displayName[0])  姓名
+					// alert(data[0].phoneNumbers[0].value) 手机号
+					})
+				});
+			})
+		</script>
+	</body>
+
+</html>

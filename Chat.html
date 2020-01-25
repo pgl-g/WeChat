@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">好友状态</h1>
+		</header>
+		<!-- 主体部分 -->
+		<div class="mui-content">
+			<button type="button" class="mui-btn mui-btn-blue" id="btnimg">相册</button>
+			<button type="button" class="mui-btn mui-btn-blue" id="btnimg1">拍照</button>
+			<div id="boximg">
+
+			</div>
+			<div id="camera">
+
+			</div>
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function() {
+				var view = plus.webview.currentWebview();
+				mui('.mui-title')[0].innerHTML = view.title
+				// 从相册选取
+				var btnimg = document.getElementById('btnimg')
+				btnimg.addEventListener('tap', function() {
+					// alert(1)
+					plus.gallery.pick(function(path) {
+						// alert(JSON.stringify(path))
+						for (var i = 0; i < path.files.length; i++) {
+							var img = document.createElement('img')
+							img.src = path.files[i]
+							img.width = 100
+							img.height = 100
+							mui('#boximg')[0].appendChild(img)
+						}
+					}, function(err) {
+						return err
+					}, {
+						// 设置选取的相册的参数
+						multiple: true
+					});
+				})
+
+
+
+				// 获取地址
+				let imgSrc = plus.storage.getItem("imgSrc")
+				if(imgSrc){
+					let imgs = document.createElement('img')
+					imgs.src = imgSrc
+					imgs.width = 100
+					imgs.height = 100
+					mui('#camera')[0].appendChild(imgs)
+				}
+				// 拍照
+				var btnimg1 = document.getElementById('btnimg1')
+				btnimg1.addEventListener('tap', () => {
+					// alert(1)
+					let cameraindex = plus.camera.getCamera(1);
+					cameraindex.captureImage((path) => {
+						// alert(JSON.stringify(plus.io.convertAbsoluteFileSystem( path )))
+						let imgs = document.createElement('img')
+						imgs.src = "file://" + plus.io.convertLocalFileSystemURL(path)
+						imgs.width = 100
+						imgs.height = 100
+						mui('#camera')[0].appendChild(imgs)
+						plus.storage.setItem("imgSrc", "file://" + plus.io.convertLocalFileSystemURL(path));
+					})
+				})
+			})
+		</script>
+	</body>
+
+</html>
